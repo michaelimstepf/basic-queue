@@ -1,4 +1,4 @@
-# BasicQueue
+# BasicQueue IN PROGRESS
 
 TODO: Write a gem description
 
