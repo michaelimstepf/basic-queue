@@ -1,6 +1,10 @@
-# BasicQueue IN PROGRESS
+# BasicQueue
 
-TODO: Write a gem description
+A basic first-in-first-out (FIFO) queue data structure.
+
+It supports the usual enqueue and dequeue operations, along with methods for peeking at the first item, testing if the queue is empty and counting the number of items in the queue.
+
+This implementation uses a singly-linked list with a non-static nested class for linked-list nodes. As a result, the dequeue method is more performant than using an Array (see notes below).
 
 ## Installation
 
@@ -18,7 +22,44 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Create a new instance of a `Queue`:
+
+```ruby
+queue = BasicQueue::Queue.new
+```
+
+Add items to the queue:
+```ruby
+queue.enq 'Michael'
+queue << 'Peter' # << is an alias method for enq(), you can use either method
+```
+
+Check which item is next in the queue:
+```ruby
+queue.peek
+=> "Michael"
+```
+
+Remove item from the queue:
+```ruby
+queue.deq
+=> "Michael"
+```
+
+Check number of items left in the queue:
+```ruby
+queue.length # size() is an alias method for length, you can use either method
+=> 1
+```
+
+Clear queue:
+```ruby
+queue.clear
+```
+
+## Performance
+
+All methods take constant time (Θ(1)). Hence, it is more performant than using an Array, since Array#unshift takes linear time (Θ(n)).
 
 ## Contributing
 

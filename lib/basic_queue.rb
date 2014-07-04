@@ -2,19 +2,22 @@ require "basic_queue/version"
 
 module BasicQueue
 
-# A basic queue with enqueue and dequeue methods.
+# A basic first-in-first-out (FIFO) queue data structure.
 
-# This class takes a different approach by reversing the array.
-# Enqueue adds a new element to the end of the array, which runs at constant time.
-# Dequeue deletes the first non-nil value of the array, also running at constant time.
+# It supports the usual enqueue and dequeue operations, 
+# along with methods for peeking at the first item, testing
+# if the queue is empty and counting the number of items in the queue.
 
-# To save memory, once the array has a set of leading values with nil entries
-# the array is copied into a new array without the leading empty values.
-# This process can be turned on or off and the threshold can be set in the initialize method.
+# This implementation uses a singly-linked list with a non-static
+# nested class for linked-list nodes.
+
+# All methods take constant time (Θ(1)). Hence, it is more performant than
+# an Array, since Array#unshift takes linear time (Θ(n)).
 
 # @author Robert Sedgewick
 # @author Kevin Wayne
 # @author Michael Imstepf
+# @see http://algs4.cs.princeton.edu/13stacks
 # @see http://algs4.cs.princeton.edu/13stacks/LinkedQueue.java.html
 class Queue
   # Initializes the queue and sets variables.
