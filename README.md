@@ -64,7 +64,7 @@ All methods take constant time (Θ(1)). Hence, using this data structure is more
 Benchmarks on a 2.6 GHz i7 16GB RAM computer showed the following results for the operations listed below on queues prefilled with 100 million items:
 
 
-BasicQueue::Enq#enq: 0.000013s / Array#unshift: 0.244603s
+BasicQueue::Enq#enq: 0.000013s / Array#unshift: 0.244603s (19,000 times faster)
 
 BasicQueue::Enq#deq: 0.000005s / Array#pop:0.000002s
 
