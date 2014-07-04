@@ -2,9 +2,9 @@
 
 A basic first-in-first-out (FIFO) queue data structure.
 
-It supports the usual enqueue and dequeue operations, along with methods for peeking at the first item, testing if the queue is empty and counting the number of items in the queue.
+It supports the usual enqueue and dequeue operations, along with methods for peeking at the first item, testing if the queue is empty, clearing the queue and counting the number of items in the queue.
 
-This implementation uses a singly-linked list with a non-static nested class for linked-list nodes. As a result, the dequeue method is more performant than using an Array (see notes below).
+This implementation uses a singly-linked list with a non-static nested class for linked-list nodes. As a result, this data structure is more performant than implementing a queue with an array (see notes below).
 
 ## Installation
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-Create a new instance of a `Queue`:
+Create a new instance of `Queue`:
 
 ```ruby
 queue = BasicQueue::Queue.new
@@ -59,7 +59,7 @@ queue.clear
 
 ## Performance
 
-All methods take constant time (Θ(1)). Hence, it is more performant than using an Array, since Array#unshift takes linear time (Θ(n)).
+All methods take constant time (Θ(1)). Hence, using this data structure is more performant than using an Array since Array#unshift takes linear time (Θ(n)).
 
 ## Contributing
 
