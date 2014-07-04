@@ -6,6 +6,8 @@ This gem supports the usual enqueue and dequeue operations, along with methods f
 
 This implementation uses a singly-linked list with a non-static nested class for linked-list nodes. As a result, this data structure is more performant than implementing a queue with an array (see notes below).
 
+This a Ruby implementation of a modified version of [Robert Sedgewick](http://www.cs.princeton.edu/~rs/)'s and [Kevin Wayne](http://www.cs.princeton.edu/~wayne/contact/)'s [LinkedQueue Java class](http://algs4.cs.princeton.edu/13stacks/LinkedQueue.java.html). Credit goes to these two authors of the book [Algorithms](http://www.amazon.com/gp/product/032157351X/ref=as_li_qf_sp_asin_il_tl?ie=UTF8&tag=algs4-20&linkCode=as2&camp=1789&creative=9325&creativeASIN=032157351X).
+
 ## Installation
 
 Add this line to your application's Gemfile:
