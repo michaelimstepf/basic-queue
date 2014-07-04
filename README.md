@@ -61,7 +61,7 @@ queue.clear
 
 ## Performance
 
-All methods take constant time (Θ(1)). Hence, using this data structure is more performant than using an Array since Array#unshift takes linear time (Θ(n)).
+All methods take constant time (Θ(1)). Hence, using this data structure is more performant than using an Array since Array#unshift (or Array#shift if you add new elements at the end of the array) takes linear time (Θ(n)).
 
 Benchmarks on a 2.6 GHz i7 16GB RAM computer showed the following results for the operations listed below on queues prefilled with 100 million items:
 
