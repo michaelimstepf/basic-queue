@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Michael Imstepf"]
   spec.email         = ["michael.imstepf@gmail.com"]
   spec.summary       = %q{A first-in-first-out (FIFO) queue data structure.}
-  spec.description   = %q{It supports the usual enqueue and dequeue operations, along with methods for peeking at the first item, testing if the queue is empty and counting the number of items in the queue.}
+  spec.description   = %q{This gem supports the usual enqueue and dequeue operations, along with methods for peeking at the first item, testing if the queue is empty and counting the number of items in the queue.}
   spec.homepage      = "https://github.com/michaelimstepf/basic-queue"
   spec.license       = "MIT"
 

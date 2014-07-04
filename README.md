@@ -2,7 +2,7 @@
 
 A basic first-in-first-out (FIFO) queue data structure.
 
-It supports the usual enqueue and dequeue operations, along with methods for peeking at the first item, testing if the queue is empty, clearing the queue and counting the number of items in the queue.
+This gem supports the usual enqueue and dequeue operations, along with methods for peeking at the first item, testing if the queue is empty, clearing the queue and counting the number of items in the queue.
 
 This implementation uses a singly-linked list with a non-static nested class for linked-list nodes. As a result, this data structure is more performant than implementing a queue with an array (see notes below).
 
