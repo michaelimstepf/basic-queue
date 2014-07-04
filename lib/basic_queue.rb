@@ -4,10 +4,6 @@ module BasicQueue
 
 # A basic queue with enqueue and dequeue methods.
 
-# In arrays and queues based on arrays, the enqueue method
-# (Array#unshift) is often expensive since it needs to iterate through each
-# array member and shift each member to the right, resulting in linear running time.
-
 # This class takes a different approach by reversing the array.
 # Enqueue adds a new element to the end of the array, which runs at constant time.
 # Dequeue deletes the first non-nil value of the array, also running at constant time.
@@ -16,23 +12,37 @@ module BasicQueue
 # the array is copied into a new array without the leading empty values.
 # This process can be turned on or off and the threshold can be set in the initialize method.
 
+# @author Robert Sedgewick
+# @author Kevin Wayne
 # @author Michael Imstepf
+# @see http://algs4.cs.princeton.edu/13stacks/LinkedQueue.java.html
 class Queue
   # Initializes the queue and sets variables.
-  # @param garbage_collection [Boolean] switch to turn truncation of reversed array on or off
-  # @param garbage_collection_threshold [Integer] threshold to specify the number of leading nil entries until the array gets truncated
-  def initialize(garbage_collection = true, garbage_collection_threshold = 100_000)
-    @garbage_collection = garbage_collection
-    @garbage_collection_threshold = garbage_collection_threshold
-    @array = []
-    @first_index = 0
+  def initialize
+    @length = 0
+    @first = nil
+    @last = nil
   end
 
   # Adds new item to the queue.
   # @param item [Item] the item to be enqueued
   # @return [Item] item
   def enq(item)
-    @array << item
+    # save previous old last node for use below
+    old_last = @last
+    
+    # create new last node and update @last_item
+    @last = Node.new(item, nil)    
+
+    if empty? # set to nil
+      @first = @last
+    else # point 2nd last node to last node
+      old_last.next_node = @last
+    end
+    
+    @length += 1
+
+    item
   end
 
   # Adds new item to the queue.
@@ -43,36 +53,37 @@ class Queue
     enq(item)
   end
 
-  # Removes item from the queue.
+  # Removes and returns the item on this queue that was least recently added.
   # @return [Item] dequeued item
   def deq
     return nil if empty?
     
-    # get item and update @first_index
-    first_item = @array[@first_index]
-    @array[@first_index] = nil
-    @first_index += 1
+    # save previous first node for return value
+    old_first = @first
 
-    # clean up
-    if @garbage_collection && (@first_index >= @garbage_collection_threshold)
-      collect_garbage 
-    end
+    # update first node
+    @first = @first.next_node
+    @length -= 1
 
-    first_item
+    # avoid loitering
+    @last = nil if empty?
+
+    old_first.item
   end
 
   # Clears queue.
   # @return [Boolean] true
   def clear
-    @array = []
-    @first_index = 0
+    @length = 0
+    @first = nil
+    @last = nil
     true    
   end
 
   # Returns length of queue.
   # @return [Integer]
   def length
-    @array.length - @first_index
+    @length
   end
 
   # Returns length of queue.
@@ -86,13 +97,24 @@ class Queue
   def empty?
     length == 0
   end
+end
 
-  private
+# In arrays and queues based on arrays, the enqueue method
+# (Array#unshift) is often expensive since it needs to iterate through each
+# array member and shift each member to the right, resulting in linear running time.
+# We use a singly linked list instead.
 
-  # Truncates array.
-  def collect_garbage
-    @array = @array[@first_index..@array.length].dup
-    @first_index = 0
+# @author Robert Sedgewick
+# @author Kevin Wayne
+# @author Michael Imstepf
+# @see http://algs4.cs.princeton.edu/13stacks/LinkedQueue.java.html
+class Node
+  attr_reader :item
+  attr_accessor :next_node
+
+  def initialize(item, next_node)
+    @item = item
+    @next_node = next_node
   end
 end
 

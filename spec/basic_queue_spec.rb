@@ -55,31 +55,17 @@ describe BasicQueue::Queue do
       end
     end
 
-    context 'when length of array does not surpass the garbage collection threshold' do
-      queue = BasicQueue::Queue.new(true, 2)
+    context 'when there is an underflow' do
+      queue = BasicQueue::Queue.new
 
-      it 'does not truncates array' do
+      it 'returns nil' do
         queue.enq 'Michael'
-        queue.enq 'Peter'        
-        queue.enq 'John'
-        queue.enq 'Kate'
-        queue.deq
-        expect(queue.instance_variable_get(:@array).first). to be_nil        
-      end
-    end
-    
-
-    context 'when length of array surpasses the garbage collection threshold' do
-      queue = BasicQueue::Queue.new(true, 2)
-
-      it 'truncates array' do
-        queue.enq 'Michael'
-        queue.enq 'Peter'        
-        queue.enq 'John'
-        queue.enq 'Kate'
-        queue.deq
-        queue.deq
-        expect(queue.instance_variable_get(:@array).first).to eq 'John'        
+        queue.enq 'Peter'
+        expect(queue.deq).to eq 'Michael'
+        expect(queue.deq).to eq 'Peter'
+        expect(queue.deq).to eq nil
+        expect(queue.deq).to eq nil        
+        expect(queue.length).to eq 0
       end
     end    
   end
