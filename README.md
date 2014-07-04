@@ -61,6 +61,14 @@ queue.clear
 
 All methods take constant time (Θ(1)). Hence, using this data structure is more performant than using an Array since Array#unshift takes linear time (Θ(n)).
 
+Benchmarks on a 2.6 GHz i7 16GB RAM computer showed the following results for the operations listed below on queues prefilled with 100 million items:
+
+BasicQueue::Enq#enq: 0.000013s
+Array#unshift: 0.244603s
+
+Array#pop:0.000002s
+BasicQueue::Enq#deq: 0.000005s
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/basic_queue/fork )
