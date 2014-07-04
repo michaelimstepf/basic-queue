@@ -163,5 +163,26 @@ describe BasicQueue::Queue do
         expect(queue.empty?).to be_falsey        
       end      
     end    
-  end         
+  end
+
+  describe '#peek' do
+    context 'when queue is empty' do
+      queue = BasicQueue::Queue.new
+
+      it 'returns nil' do
+        expect(queue.peek).to be_nil
+      end
+    end      
+
+    context 'when queue is not empty' do
+      queue = BasicQueue::Queue.new
+
+      it 'returns next item in the queue' do
+        queue.enq 'Michael'
+        queue.enq 'Peter'          
+        expect(queue.peek).to eq 'Michael'
+        expect(queue.peek).to eq 'Michael'
+      end
+    end      
+  end             
 end

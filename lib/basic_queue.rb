@@ -71,6 +71,12 @@ class Queue
     old_first.item
   end
 
+  # Returns next item in the queue.
+  # @return [Item] item
+  def peek
+    empty? ? nil : @first.item
+  end
+
   # Clears queue.
   # @return [Boolean] true
   def clear
