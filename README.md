@@ -27,6 +27,8 @@ Or install it yourself as:
 Create a new instance of `Queue`:
 
 ```ruby
+require 'basic_queue' # if not automatically loaded
+
 queue = BasicQueue::Queue.new
 ```
 
