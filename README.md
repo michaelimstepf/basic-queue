@@ -1,6 +1,4 @@
-# BasicQueue
-
-A basic first-in-first-out (FIFO) queue data structure.
+#  Basic first-in-first-out (FIFO) queue
 
 This gem supports the usual enqueue and dequeue operations, along with methods for peeking at the first item, testing if the queue is empty, clearing the queue and counting the number of items in the queue.
 
